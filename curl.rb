@@ -10,7 +10,8 @@ json = Net::HTTP.get(uri)
 result = JSON.parse(json)
 
 (result["upgrades"]).count.times do |i|
-if (result["upgrades"][i]["description"]).include?("Long-Term Support version")
+if (result["upgrades"][i]["description"]).include?("Long-Term Support version") && \
+   (result["upgrades"][i]["plugins"]["incompatible"]).empty?
   if i > 1
     break
   end
