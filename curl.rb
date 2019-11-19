@@ -16,5 +16,10 @@ if (result["upgrades"][i]["description"]).include?("Long-Term Support version") 
     break
   end
     puts (result["upgrades"][i]["version"])
+  else
+    if (result["upgrades"][i]["description"]).include?("Long-Term Support version") && \
+       !(result["upgrades"][i]["plugins"]["incompatible"]).empty?
+       puts (result["upgrades"][i]["version"])+" has incompatible plugins"
+    end
   end
 end
